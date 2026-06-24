@@ -19,7 +19,7 @@ spec:
         image: postgres:15
         env:
         - name: POSTGRES_DB
-          value: mydb
+          value: dashboard_db
         - name: POSTGRES_USER
           value: admin
         - name: POSTGRES_PASSWORD
