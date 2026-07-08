@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: postgres
   namespace: postgres-db
+  annotations:
+    metallb.universe.tf/address-pool: "metallb-dynamic"
 spec:
   type: LoadBalancer
   ports:
