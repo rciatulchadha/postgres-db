@@ -14,19 +14,30 @@ spec:
       labels:
         app: postgres
     spec:
+      securityContext:
+        fsGroup: 1000710000
+
       containers:
       - name: postgres
         image: postgres:15
+
         env:
         - name: POSTGRES_DB
           value: dashboard_db
+
         - name: POSTGRES_USER
           value: admin
+
         - name: POSTGRES_PASSWORD
           value: secret
+
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: data
+        - name: data
+          mountPath: /var/lib/postgresql/data
+
       volumes:
       - name: data
         persistentVolumeClaim:
